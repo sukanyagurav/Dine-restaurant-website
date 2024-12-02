@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.hero-home{
+    background-image: url('../public/homepage/hero-bg-desktop@2x.jpg');
+}
+
+
