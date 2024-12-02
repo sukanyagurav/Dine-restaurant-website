@@ -8,3 +8,8 @@
 }
 
 
+
+.hero-booking{
+    min-height: 84vh !important;
+    background-image: url('../public/booking/hero-bg-desktop@2x.jpg');
+}
