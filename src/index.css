@@ -4,12 +4,16 @@
 
 
 .hero-home{
-    background-image: url('../public/homepage/hero-bg-desktop@2x.jpg');
+    background-image: url('/homepage/hero-bg-desktop@2x.jpg');
 }
 
 
 
 .hero-booking{
     min-height: 84vh !important;
-    background-image: url('../public/booking/hero-bg-desktop@2x.jpg');
+    background-image: url('/booking/hero-bg-desktop@2x.jpg');
+}
+.card:first-of-type section h2 {
+    padding-top:8rem;
+    margin-top: 4rem;
 }

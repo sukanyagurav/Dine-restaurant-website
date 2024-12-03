@@ -10,8 +10,8 @@ const Hero = ({h1Text,description,children}) => {
     bg = "hero-home";
   }
   return (
-    <header className={`min-h-screen hero bg-cover ${bg} `}>
-      <div className="max-w-[1200px] mx-auto pt-20 px-4 flex flex-col justify-between" >
+    <header className={`min-h-[850px] hero bg-cover ${bg} `}>
+      <div className="max-w-[1200px] mx-auto py-20 px-4 flex flex-col justify-between" >
         <a href="/">
           <img src={logo} alt="" />
         </a>
