@@ -1,4 +1,4 @@
-import { redirect, useLocation, useNavigate } from "react-router";
+import { Link, useLocation } from "react-router";
 import logo from "../../public/logo.svg";
 import Button from "./UI/Button";
 const Hero = ({h1Text,description,children}) => {
@@ -12,9 +12,9 @@ const Hero = ({h1Text,description,children}) => {
   return (
     <header className={`min-h-[850px] hero bg-cover ${bg} `}>
       <div className="max-w-[1200px] mx-auto py-20 px-4 flex flex-col justify-between" >
-        <a href="/">
+        <Link href="/">
           <img src={logo} alt="" />
-        </a>
+        </Link>
         <div className="w-[500px] text-white mt-28">
           <h1 className="text-7xl leading-[1.2] font-thin">
             {h1Text}

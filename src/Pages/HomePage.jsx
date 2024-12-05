@@ -1,11 +1,10 @@
-import React from "react";
 import Hero from "../components/Hero";
 import Container from "../components/UI/Container";
-import Heading from "../components/UI/Heading";
 import enjoy from "/homepage/enjoyable-place-desktop@2x.jpg";
 import locally from "/homepage/locally-sourced-desktop@2x.jpg";
-import Card from "../components/UI/Card";
 import Menus from "../components/Menus";
+import CTA from "../components/CTA";
+import Footer from "../components/Footer";
 const HomePage = () => {
   return (
     <>
@@ -21,7 +20,8 @@ const HomePage = () => {
           "Our relaxed surroundings make dining with us a great experience for everyone. We can even arrange a tour of the farm before your meal."
         }
         images={enjoy}
-        sectionClasses="-mt-24"
+        imgClasses="bgRight"
+        sectionClasses="-mt-24 justify-between"
       />
       <Container
         sectionClasses="mt-32 flex-row-reverse justify-between"
@@ -29,9 +29,13 @@ const HomePage = () => {
         description={
           "All our ingredients come directly from our farm or local fishery.So you can be sure that you’re eating the freshest, most sustainable food."
         }
+        imgClasses={"bgLeft"}
         images={locally}
       />
       <Menus/>
+
+      <CTA/>
+      <Footer/>
     </>
   );
 };
