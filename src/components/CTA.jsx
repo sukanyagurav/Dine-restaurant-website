@@ -1,5 +1,5 @@
 import React from "react";
-import Heading from "./UI/Heading";
+
 import Button from "./UI/Button";
 import Card from "./UI/Card";
 import { useNavigate } from "react-router";

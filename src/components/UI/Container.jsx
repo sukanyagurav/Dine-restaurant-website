@@ -13,20 +13,20 @@ const Container = ({
   return (
     <Card>
       <section
-        className={`flex items-center  p-4 gap-8 ${sectionClasses}  details `}
+        className={`flex lg:items-center text-center lg:text-left flex-col lg:flex-row p-4 gap-8 ${sectionClasses}  details `}
       >
-        <div className={`relative flex-[0.5] ${imgClasses}`}>
+        <div className={`relative lg:flex-[0.5] ${imgClasses}`}>
           <picture className="">
             <source srcSet="" />
             <img
               src={images}
               alt={h1Text}
-              className={`max-w-[500px] h-[650px] object-contain`}
+              className={`w-full md:w-[80%] mx-auto  h-[410px] lg:max-w-[500px] object-cover object-center lg:w-full lg:mx-none lg:h-[650px] lg:object-contain`}
             />
           </picture>
         </div>
 
-        <div className="flex-[0.5] max-w-[440px] ">
+        <div className="self-center flex-[0.5] max-w-[440px] ">
           <Heading h1Text={h1Text} />
           <p className="my-4 text-2xl font-thin">{description}</p>
         </div>

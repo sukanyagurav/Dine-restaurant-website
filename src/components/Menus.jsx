@@ -5,10 +5,10 @@ import { menus } from "../utils/menu";
 
 const Menus = () => {
   return (
-    <div className="bg-black text-white py-44 -mt-20 px-4">
+    <div className="bg-black text-white py-20 my-20 md:mb-0 lg:py-44 lg:-mt-20 px-4">
       <Card>
-        <div className="flex lg:gap-16 items-center flex-col lg:flex-row">
-          <div className="p-4 text-center lg:text-left max-w-[500px]">
+        <div className="flex lg:gap-16 text-center md:text-left items-center lg:items-start flex-col lg:flex-row">
+          <div className="p-4 max-w-[500px]">
             <Heading h1Text={`A few highlights \n from our menu`} />
             <p className="text-2xl mt-8 font-thin">
               We cater for all dietary requirements, but here’s a glimpse at
@@ -39,7 +39,7 @@ const Menus = () => {
                   </picture>
                 </div>
 
-                <div className="text-center">
+                <div className="">
                   <h3 className="font-semibold text-[1.35rem]">{menu.name}</h3>
                   <p className="font-thin text-xl mt-1">{menu.description}</p>
                 </div>

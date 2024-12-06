@@ -24,7 +24,7 @@ const HomePage = () => {
         sectionClasses="-mt-24 justify-between"
       />
       <Container
-        sectionClasses="mt-32 flex-row-reverse justify-between"
+        sectionClasses="mt-16 lg:mt-32 lg:flex-row-reverse justify-between"
         h1Text={`The most locally \n sourced food`}
         description={
           "All our ingredients come directly from our farm or local fishery.So you can be sure that you’re eating the freshest, most sustainable food."
