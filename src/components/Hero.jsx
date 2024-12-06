@@ -3,7 +3,7 @@ import logo from "../../public/logo.svg";
 import Button from "./UI/Button";
 const Hero = ({h1Text,description,children}) => {
   const { pathname } = useLocation();
-  const navigater = useNavigate();
+  const navigate = useNavigate();
   let bg = "";
   if (pathname === "/booking") {
     bg = "hero-booking";
