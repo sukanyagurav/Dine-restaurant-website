@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import logo from "../../public/logo.svg";
 import Button from "./UI/Button";
 const Hero = ({h1Text,description,children}) => {
   const { pathname } = useLocation();
+  const navigater = useNavigate();
   let bg = "";
   if (pathname === "/booking") {
     bg = "hero-booking";
