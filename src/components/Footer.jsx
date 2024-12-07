@@ -1,14 +1,11 @@
 import React from "react";
 import Card from "./UI/Card";
-import { Link } from "react-router";
-import logo from "../../public/logo.svg";
+import Logo from "./UI/Logo";
 const Footer = () => {
   return (
     <div className="bg-black p-4 py-24 text-white">
       <Card classes="flex flex-col text-center md:text-left items-center md:items-start md:flex-row gap-12 justify-between">
-        <Link to="/">
-          <img src={logo} alt="" />
-        </Link>
+      <Logo/>
 
         <address className="not-italic text-2xl leading-relaxed"> 
           <p>Marthwaite, Sedbergh</p>
