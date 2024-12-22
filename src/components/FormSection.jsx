@@ -118,13 +118,18 @@ const FormSection = () => {
   }
   function makeReservation(e) {
     e.preventDefault()
-    if(reservation.name.length < 2) {
+    if(reservation.name.length < 2 ) {
       setError({...error,name:"Please enter a valid name"})
     }
     let emailPattern=/^([a-zA-Z0-9\.-]+)@([a-zA-z0-9-]+)(\.[a-z]{2,18})(\.[a-z]{2,8})?$/
-    if(!reservation.email.match(emailPattern)){
-      setError({...error,email:'Oops! looks like you enter invalid email address'})
+    if(reservation.email){
+      if( !reservation.email.match(emailPattern)){
+        setError({...error,email:'Oops! looks like you enter invalid email address'})
+      }
+    }else{
+      setError({...error,email:"Looks like you forgot to enter your email address"})
     }
+    
   }
   useEffect(()=>{
     const timer = setTimeout(()=>{

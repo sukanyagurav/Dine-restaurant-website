@@ -5,6 +5,7 @@ import locally from "/homepage/locally-sourced-desktop@2x.jpg";
 import Menus from "../components/Menus";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import Carousel from "../components/Carousel";
 const HomePage = () => {
   return (
     <>
@@ -33,7 +34,7 @@ const HomePage = () => {
         images={locally}
       />
       <Menus/>
-
+      <Carousel/>
       <CTA/>
       <Footer/>
     </>
