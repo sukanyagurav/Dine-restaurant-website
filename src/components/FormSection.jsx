@@ -1,6 +1,6 @@
 import iconMinus from "../../public/icons/icon-minus.svg";
 import iconPlus from "../../public/icons/icon-plus.svg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./UI/Button";
 
 const Input = ({
@@ -17,7 +17,6 @@ const Input = ({
       placeholder={placeholder}
       onChange={onChange}
       value={value}
-      required
       onBlur={onBlur}
       className={`w-full text-2xl block p-4 mb-6 border-b-2 pb-2 border-b-[#9A7D65] font-thin font-sans ${classes}`}
     />
@@ -35,7 +34,7 @@ const FormSection = () => {
     type: "AM",
     guests: 1,
   });
-
+  const [error,setError] = useState({})
   function validateDate() {
     let { month, day, year } = reservation;
     if (
@@ -57,6 +56,7 @@ const FormSection = () => {
       if (day < new Date().getDate()) {
         day = new Date().getDate();
       }
+      setError({...error,date:"Please don't enter previous dates"})
     }
     if (parseInt(month, 10) < 1 || parseInt(month, 10) > 12) {
       month = new Date().getMonth() + 1;
@@ -83,20 +83,25 @@ const FormSection = () => {
     if (reservation.type === "AM") {
       if (!(reservation.hours < 12 && reservation.hours >= 9)) {
         hours = 9;
+         setError({...error,time:"We are open from 9:00 am"})
       }
       if (!(reservation.minutes < 59 && reservation.minutes >= 0)) {
         mins = 0;
       }
+      
     } else {
       if (reservation.hours < 1 || reservation.hours > 12) {
         hours = 12;
       }
       if (reservation.hours != 12 && reservation.hours > 9) {
         hours = 12;
+        setError({...error,time:"We are open till 9:00 pm"})
       }
       if (reservation.hours == 9) {
         mins = 0;
+        setError({...error,time:"We are open till 9:00 pm"})
       }
+     
     }
     setReservation({ ...reservation, hours: hours, minutes: mins });
   }
@@ -111,30 +116,48 @@ const FormSection = () => {
   function handlePlus() {
     setReservation({ ...reservation, guests: reservation.guests + 1 });
   }
-  function makeReservation() {}
+  function makeReservation(e) {
+    e.preventDefault()
+    if(reservation.name.length < 2) {
+      setError({...error,name:"Please enter a valid name"})
+    }
+    let emailPattern=/^([a-zA-Z0-9\.-]+)@([a-zA-z0-9-]+)(\.[a-z]{2,18})(\.[a-z]{2,8})?$/
+    if(!reservation.email.match(emailPattern)){
+      setError({...error,email:'Oops! looks like you enter invalid email address'})
+    }
+  }
+  useEffect(()=>{
+    const timer = setTimeout(()=>{
+      setError({})
+    },5000)
+    return ()=> clearTimeout(timer)
+  },[error])
   return (
-    <form className="relative right-0 lg:-bottom-64  flex-[0.5] bg-white py-8 px-6 lg:p-8 w-full lg:max-w-[500px] shadow-2xl">
+    <form className="relative right-0 lg:-bottom-64  flex-[0.5] bg-white py-8 px-6 lg:p-8 w-full lg:max-w-[500px] shadow-2xl" noValidate onSubmit={makeReservation}>
+    <div className="relative">
       <Input
         type="text"
         placeholder="Name"
-        onChange={(e) =>
-          setReservation({ ...reservation, name: e.target.value })
-        }
+        onChange={(e) => setReservation({ ...reservation, name: e.target.value }) }
         value={reservation.name}
       />
-      <Input
+       {error.name && <span className="absolute -bottom-7 text-red-500"> {error.name}</span>}
+    </div>
+    <div className="relative">
+    <Input
         type="email"
         placeholder="Email"
-        onChange={(e) =>
-          setReservation({ ...reservation, email: e.target.value })
-        }
+        onChange={(e) => setReservation({ ...reservation, email: e.target.value })}
         value={reservation.email}
       />
+       {error.email && <span className="absolute -bottom-7 text-red-500"> {error.email}</span>}
+    </div>
+     
       <div className="flex gap-2  flex-wrap md:flex-nowrap justify-between items-center mb-6">
         <label htmlFor="date" className="block text-2xl w-full lg:flex-[0.5] font-thin font-sans text-[#9A7D65]">
           Pick a date
         </label>
-        <div className="flex gap-4 lg:flex-[0.5]  items-center w-full">
+        <div className="flex gap-4 lg:flex-[0.5]  items-center w-full relative">
           <Input
             type="text"
             placeholder="MM"
@@ -159,11 +182,12 @@ const FormSection = () => {
             value={reservation.year}
             classes="lg:!w-[80px] !mb-0   "
           />
+         {error.date && <span className="absolute -bottom-7 text-red-500"> {error.date}</span>}
         </div>
       </div>
       <div className="flex gap-2 flex-wrap md:flex-nowrap justify-between items-center mb-6">
         <label htmlFor="time" className="text-2xl w-full lg:flex-[0.5] font-thin font-sans text-[#9A7D65]">Pick a time</label>
-        <div className="flex gap-4 lg:flex-[0.5]  items-center w-full">
+        <div className="flex gap-4 lg:flex-[0.5]  items-center w-full relative">
           <Input
             type="text"
             placeholder="HH"
@@ -194,6 +218,7 @@ const FormSection = () => {
             <option value="AM">AM</option>
             <option value="PM">PM</option>
           </select>
+          {error.time && <span className="absolute -bottom-7 text-red-500"> {error.time}</span>}
         </div>
       </div>
       <div className=" text-xl w-full text-[#9A7D65] flex justify-between gap-4 my-8 px-3 py-4 border-b-2 border-b-[#9A7D65]">
@@ -207,7 +232,7 @@ const FormSection = () => {
           <img src={iconPlus} alt="" className="block"/>
         </button>
       </div>
-      <Button text="make reservation" onClick={makeReservation} classes={'w-full bg-black text-white hover:bg-white hover:text-black hover:border-black'} />
+      <Button text="make reservation"  classes={'w-full bg-black text-white hover:bg-white hover:text-black hover:border-black'} />
     </form>
   );
 };

@@ -34,7 +34,7 @@
 }
 .bgLeft::after {
 
-  @apply content-none md:content-bg-left w-full absolute h-full md:-right-[457px] md:-bottom-[535px] lg:-left-[89px];
+  @apply content-none md:content-bg-left w-full absolute h-full md:-right-[457px] md:-bottom-[270px] -z-[1] lg:-left-[89px];
 }
 
 .bgRight::after {
@@ -48,6 +48,3 @@ form::after {
 .blank{
   @apply  bg-[url('/patterns/pattern-curve-bottom-right.svg')] bg-no-repeat bg-[length:auto_400px];
 }
-/* form::before{
-  @apply content-none lg:content-curve-bottom lg:w-full lg:h-full absolute -z-[1]  lg:-left-full -bottom-[500px]; 
-} */
