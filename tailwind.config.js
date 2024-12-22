@@ -16,6 +16,8 @@ export default {
       content: {
         "bg-left": 'url("/patterns/pattern-curve-top-left.svg")',
         "bg-right": 'url("/patterns/pattern-curve-top-right.svg")',
+        "booking-form":'url("/patterns/pattern-lines.svg")',
+        "curve-bottom":'url("/patterns/pattern-curve-bottom-right.svg")',
       },
     },
   },

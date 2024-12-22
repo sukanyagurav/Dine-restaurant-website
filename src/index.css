@@ -7,7 +7,7 @@
 }
 
 .hero-booking {
-  min-height: 84vh !important;
+  min-height: 600px !important;
   background-image: url("/booking/hero-bg-desktop@2x.jpg");
 }
 .card:first-of-type section div:nth-child(2) {
@@ -21,13 +21,13 @@
   top: -40px;
   left: 0;
 }
-.menuImg::after {
+.menuImg:after {
  
   @apply content-none md:content-[''] w-[3rem] h-[0.5px] absolute -right-[49px] top-[1rem] bg-[#9e7f66];
 }
-@media (max-width: 1000px) {
- 
 
+
+@media (max-width: 1000px) {
   .heading::before {
     left: 40%;
   }
@@ -40,3 +40,14 @@
 .bgRight::after {
   @apply content-none absolute md:content-bg-right w-full h-full md:-left-[270px] md:-bottom-[300px] lg:right-[50%];
 }
+
+form::after {
+  @apply content-none lg:content-booking-form lg:w-full lg:h-full absolute -z-[1] lg:-left-20 -bottom-[500px]; 
+  
+}
+.blank{
+  @apply  bg-[url('/patterns/pattern-curve-bottom-right.svg')] bg-no-repeat bg-[length:auto_400px];
+}
+/* form::before{
+  @apply content-none lg:content-curve-bottom lg:w-full lg:h-full absolute -z-[1]  lg:-left-full -bottom-[500px]; 
+} */
